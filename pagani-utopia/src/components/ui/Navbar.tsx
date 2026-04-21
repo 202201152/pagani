@@ -1,23 +1,37 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
-import { useAppStore } from '../../store/useAppStore';
 import { useScramble } from '../../hooks/useScramble';
-import { NAVIGATION } from '../../lib/constants';
+
+const NAVIGATION = [
+  { id: 'design', label: 'DESIGN' },
+  { id: 'performance', label: 'PERFORMANCE' },
+  { id: 'interior', label: 'INTERIOR' },
+];
 
 export function Navbar() {
   const navbarRef = useRef<HTMLElement>(null);
   const indicatorRef = useRef<HTMLDivElement>(null);
-  const location = useLocation();
-  const { navbarVisible, setNavbarVisible } = useAppStore();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Get active nav item
+  // Handle scroll-based active state
   useEffect(() => {
-    const currentIndex = NAVIGATION.findIndex((nav) => location.pathname === nav.path);
-    setActiveIndex(currentIndex >= 0 ? currentIndex : 0);
-  }, [location.pathname]);
+    const handleScroll = () => {
+      const sections = NAVIGATION.map((nav) => document.getElementById(nav.id));
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveIndex(i);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Slide indicator to active item
   useEffect(() => {
@@ -53,21 +67,17 @@ export function Navbar() {
           const delta = currentScrollY - lastScrollY;
 
           if (delta > 80 && currentScrollY > 100) {
-            // Scrolling down - hide navbar
             gsap.to(navbarRef.current, {
               y: -64,
               duration: 0.4,
               ease: 'power3.inOut',
             });
-            setNavbarVisible(false);
           } else if (delta < -80) {
-            // Scrolling up - show navbar
             gsap.to(navbarRef.current, {
               y: 0,
               duration: 0.4,
               ease: 'power3.inOut',
             });
-            setNavbarVisible(true);
           }
 
           lastScrollY = currentScrollY;
@@ -80,29 +90,40 @@ export function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [setNavbarVisible]);
+  }, []);
 
-  // Mobile menu toggle
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleNavClick = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
   };
 
   return (
     <>
       <nav ref={navbarRef} className="navbar">
         {/* Brand */}
-        <Link to="/" className="navbar-brand">
+        <a href="#" className="navbar-brand" onClick={(e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}>
           Pagani
-        </Link>
+        </a>
 
         {/* Navigation Links */}
         <div className="navbar-nav">
           {NAVIGATION.map((nav, index) => (
             <NavItem
-              key={nav.path}
-              path={nav.path}
+              key={nav.id}
+              id={nav.id}
               label={nav.label}
               isActive={index === activeIndex}
+              onClick={handleNavClick}
             />
           ))}
         </div>
@@ -164,10 +185,13 @@ export function Navbar() {
           </button>
 
           {NAVIGATION.map((nav, index) => (
-            <Link
-              key={nav.path}
-              to={nav.path}
-              onClick={() => setIsMenuOpen(false)}
+            <a
+              key={nav.id}
+              href={`#${nav.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick(nav.id);
+              }}
               style={{
                 fontFamily: 'var(--font-display)',
                 fontSize: 'clamp(32px, 8vw, 64px)',
@@ -180,7 +204,7 @@ export function Navbar() {
               }}
             >
               {nav.label}
-            </Link>
+            </a>
           ))}
         </div>
       )}
@@ -197,7 +221,17 @@ export function Navbar() {
   );
 }
 
-function NavItem({ path, label, isActive }: { path: string; label: string; isActive: boolean }) {
+function NavItem({
+  id,
+  label,
+  isActive,
+  onClick,
+}: {
+  id: string;
+  label: string;
+  isActive: boolean;
+  onClick: (id: string) => void;
+}) {
   const elementRef = useRef<HTMLAnchorElement>(null);
   const { displayText, scramble, reset } = useScramble(label);
 
@@ -210,14 +244,18 @@ function NavItem({ path, label, isActive }: { path: string; label: string; isAct
   };
 
   return (
-    <Link
+    <a
       ref={elementRef}
-      to={path}
+      href={`#${id}`}
       className={`navbar-link ${isActive ? 'active' : ''}`}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick(id);
+      }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {displayText}
-    </Link>
+    </a>
   );
 }

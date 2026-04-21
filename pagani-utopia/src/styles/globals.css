@@ -1,8 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@300;400&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-void: #0A0A0A;
+  --color-surface: #111111;
+  --color-gold: #C9A84C;
+  --color-gold-hi: #E8C96A;
+  --color-cream: #F5F0E8;
+  --color-crimson: #8B1A2B;
+  --color-chrome: #C8C8C8;
+
+  --font-display: "Cormorant Garamond", "Georgia", "serif";
+  --font-body: "Helvetica Neue", "Neue Haas Grotesk", "system-ui", "sans-serif";
+  --font-mono: "IBM Plex Mono", "Courier New", "monospace";
+
+  --spacing-section: clamp(80px, 10vw, 160px);
+
+  --max-width-container: min(1440px, 94vw);
+}
 
 /* Design Tokens */
 :root {
@@ -261,22 +277,6 @@ body {
   color: var(--gold);
 }
 
-/* Three.js Canvas */
-#canvas-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* Page Content */
-.page-content {
-  position: relative;
-  z-index: 1;
-}
 
 /* Horizontal Scroll Section */
 .horizontal-section {
@@ -330,6 +330,12 @@ body {
   pointer-events: none;
 }
 
+/* Marquee Gallery Card Hover */
+.marquee-card:hover img {
+  transform: scale(1.04);
+  filter: brightness(1) contrast(1.08) !important;
+}
+
 /* Diagonal Pattern */
 .diagonal-pattern {
   background-image: repeating-linear-gradient(
@@ -354,6 +360,22 @@ body {
 
 /* Responsive */
 @media (max-width: 1024px) {
+  .horizontal-section {
+    height: auto;
+    overflow: visible;
+  }
+  .horizontal-track {
+    width: 100vw;
+    flex-direction: column;
+  }
+  .horizontal-panel {
+    height: 100vh;
+    flex-direction: column;
+  }
+  .horizontal-panel > div {
+    width: 100% !important;
+  }
+
   .navbar-nav {
     display: none;
   }

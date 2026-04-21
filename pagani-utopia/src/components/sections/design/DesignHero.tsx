@@ -1,39 +1,21 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { IMAGES } from '../../../lib/constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function DesignHero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const lineRef = useRef<HTMLDivElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Parallax zoom effect on image
-      gsap.fromTo(
-        imageRef.current,
-        { scale: 1.08 },
-        {
-          scale: 1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      );
-
       // Title fade in
       gsap.from(titleRef.current, {
-        y: 60,
+        y: 80,
         opacity: 0,
-        duration: 1.2,
+        duration: 1.5,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -41,21 +23,18 @@ export function DesignHero() {
         },
       });
 
-      // Gold line grows from center
-      gsap.fromTo(
-        lineRef.current,
-        { width: 0 },
-        {
-          width: '80px',
-          duration: 1,
-          ease: 'power3.inOut',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 70%',
-          },
-          delay: 0.3,
-        }
-      );
+      // Subtitle fade in
+      gsap.from(subtitleRef.current, {
+        y: 40,
+        opacity: 0,
+        duration: 1.5,
+        ease: 'power3.out',
+        delay: 0.3,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 60%',
+        },
+      });
     });
 
     return () => ctx.revert();
@@ -70,63 +49,67 @@ export function DesignHero() {
         overflow: 'hidden',
       }}
     >
-      {/* Parallax Image */}
+      {/* Background Image */}
       <div
-        ref={imageRef}
-        className="parallax-image"
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: `url(${IMAGES.ct_top})`,
+          backgroundImage: 'url(/assets/img/pg_ut.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
         }}
-      />
-
-      {/* Dark Overlay */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'rgba(10, 10, 10, 0.4)',
-        }}
-      />
+      >
+        {/* Dark Overlay */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(to bottom, rgba(10,10,10,0.3), rgba(10,10,10,0.7))',
+          }}
+        />
+      </div>
 
       {/* Content */}
       <div
         style={{
           position: 'absolute',
-          bottom: '10vh',
-          left: 0,
-          right: 0,
-          padding: '0 4vw',
+          inset: 0,
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'flex-start',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
         <h1
           ref={titleRef}
           className="font-display"
           style={{
-            fontSize: 'clamp(64px, 12vw, 100px)',
+            fontSize: 'clamp(80px, 18vw, 240px)',
             fontWeight: 300,
             color: 'var(--cream)',
             letterSpacing: '0.15em',
             lineHeight: 1,
+            textShadow: '0 20px 40px rgba(0,0,0,0.8)',
+            marginBottom: '24px',
           }}
         >
-          DESIGN
+          UTOPIA
         </h1>
 
-        <div
-          ref={lineRef}
+        <p
+          ref={subtitleRef}
+          className="font-mono"
           style={{
-            height: '1px',
-            background: 'var(--gold)',
-            marginTop: '16px',
+            fontSize: 'clamp(12px, 2vw, 16px)',
+            color: 'var(--gold)',
+            letterSpacing: '0.3em',
+            textTransform: 'uppercase',
+            textAlign: 'center',
           }}
-        />
+        >
+          Born from obsession
+        </p>
       </div>
     </section>
   );

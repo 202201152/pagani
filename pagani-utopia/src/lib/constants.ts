@@ -35,7 +35,6 @@ export const TEASER_SPECS = [
 ];
 
 export const PAGE_TAGLINES = {
-  home: 'Born from obsession.',
   design: 'Where art ends, engineering begins.',
   performance: '852 reasons to believe.',
   interior: 'Every detail, handmade.',
@@ -49,19 +48,10 @@ export const HORACIO_QUOTE = {
 };
 
 export const NAVIGATION = [
-  { path: '/design', label: 'DESIGN' },
-  { path: '/performance', label: 'PERFORMANCE' },
-  { path: '/interior', label: 'INTERIOR' },
-  { path: '#contact', label: 'CONTACT' },
+  { id: 'design', label: 'DESIGN' },
+  { id: 'performance', label: 'PERFORMANCE' },
+  { id: 'interior', label: 'INTERIOR' },
 ];
-
-export const CAMERA_POSITIONS = {
-  home: { position: [2, 1.5, 5], lookAt: [0, 0.5, 0] },
-  design: { position: [0, 3, 0.1], lookAt: [0, 0, 0] },
-  performance: { position: [-3, 0.5, 3], lookAt: [0, 0.5, 0] },
-  interior: { position: [0, 0.8, 4], lookAt: [0, 0.5, 0] },
-  outro: { position: [0, 6, 0.1], lookAt: [0, 0, 0] },
-};
 
 export const IMAGES = {
   st_front: '/assets/img/st_front.jpg',
@@ -71,9 +61,12 @@ export const IMAGES = {
   sty_int: '/assets/img/sty_int.jpg',
   ct_gear_7: '/assets/img/ct_gear_7.jpg',
   ct_engine: '/assets/img/ct_engine.jpg',
+  // Dummy images — replace with real photography when available
+  pu_exterior: '/assets/img/pu_exterior.png',
+  pu_interior: '/assets/img/pu_interior.png',
+  pu_engine: '/assets/img/pu_engine.png',
+  pu_rear: '/assets/img/pu_rear.png',
 };
-
-export const MODEL_PATH = '/assets/model/utopia.glb';
 
 export const ANIMATION_DURATIONS = {
   preloader: 1.4,
@@ -88,17 +81,4 @@ export const SCROLL_CONFIG = {
   lenisLerp: 0.1,
   lenisSmoothWheel: true,
   lenisWheelMultiplier: 0.9,
-  mouseLerp: 0.05,
-  mouseParallaxX: 0.08,
-  mouseParallaxY: 0.08,
-  floatAmplitude: 0.015,
-  floatFrequency: 0.4,
-};
-
-export const ROTATION_SECTION = {
-  height: '300vh',
-  totalRotation: Math.PI * 2,
-  startElevation: 15,
-  endElevation: 5,
-  azimuthOrbit: 30,
 };
