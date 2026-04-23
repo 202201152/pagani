@@ -4,17 +4,17 @@ const utopiaText = `'Utopia'...For the philosopher Thomas More in 1516, Utopia w
 
 export function UtopiaTextSection() {
   return (
-    <section className="bg-void px-[6vw] py-[6vh] mt-[200px] mb-[200px]">
-      <div className="mx-auto max-w-[980px] text-center">
+    <section className="bg-void py-[200vh] mt-[4000px] mb-[4000px]">
+      <div className="mx-auto w-full max-w-[4200px] pl-[4000px] pr-[4vw] text-center">
         <p className="mb-10 font-mono text-[10px] tracking-[0.3em] text-gold uppercase">
           Manifesto
         </p>
         <ScrollReveal
-          baseOpacity={0.12}
+          baseOpacity={0.08}
           enableBlur
           baseRotation={4}
           blurStrength={8}
-          containerClassName="mx-auto text-center"
+          containerClassName="mx-auto w-full text-center"
           textClassName="font-display text-cream"
           rotationEnd="bottom bottom"
           wordAnimationEnd="bottom bottom"

@@ -143,7 +143,7 @@ export function GallerySection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-void py-[9vh]"
+      className="relative overflow-hidden bg-void pt-[3vh] pb-[6vh]"
     >
       <div className="relative z-10 mx-auto w-[94vw]">
         <div className="mb-6">

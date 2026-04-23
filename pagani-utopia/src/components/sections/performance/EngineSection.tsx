@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { IMAGES } from '../../../lib/constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,16 +46,16 @@ export function EngineSection() {
       style={{
         height: '100vh',
         position: 'relative',
+        background: 'var(--void)',
       }}
     >
-      {/* Background Image */}
       <div
+        aria-hidden
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: `url(${IMAGES.ct_engine})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          background:
+            'radial-gradient(circle at 50% 42%, rgba(40, 40, 40, 0.42), rgba(10, 10, 10, 0.96) 68%)',
         }}
       />
 
@@ -66,8 +65,9 @@ export function EngineSection() {
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'rgba(10, 10, 10, 0.85)',
+          background: 'linear-gradient(to bottom, rgba(10, 10, 10, 0.72), rgba(10, 10, 10, 0.45))',
           transition: 'background-color 1.2s ease',
+          pointerEvents: 'none',
         }}
       />
 
