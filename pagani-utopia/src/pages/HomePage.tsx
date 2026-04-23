@@ -1,4 +1,5 @@
 import { DesignHero } from '../components/sections/design/DesignHero';
+import { UtopiaTextSection } from '../components/sections/design/UtopiaTextSection';
 import { HorizontalCraft } from '../components/sections/design/HorizontalCraft';
 import { Philosophy } from '../components/sections/design/Philosophy';
 import { SpecGrid } from '../components/sections/performance/SpecGrid';
@@ -13,8 +14,10 @@ import { Outro } from '../components/sections/interior/Outro';
 export function HomePage() {
   return (
     <>
-      {/* Hero Section with Pagani Image */}
+      {/* Hero Section */}
       <DesignHero />
+      <UtopiaTextSection />
+      <GallerySection />
 
       {/* Design Section - Horizontal Scroll */}
       <section id="design">
@@ -26,7 +29,6 @@ export function HomePage() {
       <section id="performance">
         <SpecGrid />
         <EngineSection />
-        <GallerySection />
         <AccelSection />
       </section>
 

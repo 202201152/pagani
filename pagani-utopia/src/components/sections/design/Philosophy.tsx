@@ -29,7 +29,7 @@ export function Philosophy() {
         ease: 'power3.out',
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 70%',
+          start: 'top 60%',
         },
         delay: 0.2,
       });

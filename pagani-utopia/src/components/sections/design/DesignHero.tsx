@@ -49,7 +49,7 @@ export function DesignHero() {
         overflow: 'hidden',
       }}
     >
-      {/* Background Image */}
+      {/* Background Video */}
       <div
         style={{
           position: 'absolute',
@@ -60,6 +60,25 @@ export function DesignHero() {
           backgroundRepeat: 'no-repeat',
         }}
       >
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          src="/assets/video/Video%20Project.mp4"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+        >
+          <source src="/assets/video/Video%20Project.mp4" type="video/mp4" />
+          <source src="/assets/video/Video Project.mp4" type="video/mp4" />
+        </video>
         {/* Dark Overlay */}
         <div
           style={{
