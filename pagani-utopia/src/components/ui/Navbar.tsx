@@ -112,7 +112,7 @@ export function Navbar() {
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}>
-          Pagani
+          <img src="/assets/img/logo.png" alt="Pagani" className="navbar-brand-logo" draggable={false} />
         </a>
 
         {/* Navigation Links */}

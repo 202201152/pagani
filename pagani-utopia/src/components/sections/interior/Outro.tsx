@@ -22,34 +22,33 @@ export function Outro() {
   }, [setCurrentCameraPosition]);
 
   return (
-    <section 
-      ref={containerRef}
-      className="relative w-full h-screen flex flex-col items-center justify-center z-10"
-    >
-      {/* Almost dark background to let the low-light 3D car peek through */}
-      <div className="absolute inset-0 bg-[#0A0A0A]/90 -z-10" />
+    <section ref={containerRef} className="relative w-full h-screen overflow-hidden z-10">
+      <div className="absolute inset-0 bg-[#0A0A0A] -z-10" />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 opacity-80"
+        style={{
+          background:
+            'radial-gradient(circle at 50% 35%, rgba(255,255,255,0.07), rgba(10,10,10,0.96) 62%)',
+        }}
+      />
 
-      <div className="text-center pointer-events-auto">
-        <h1 className="font-display italic text-[120px] font-light text-cream leading-none m-0">
-          Only 99.
-        </h1>
-        <p className="font-body text-[20px] text-[rgba(245,240,232,0.45)] mt-6">
-          Each one different. Each one final.
-        </p>
-        
-        <div className="mt-16 flex flex-col items-center">
-          <p className="font-mono text-gold text-[11px] tracking-[0.2em] uppercase">
-            — Pagani Automobili, Modena
-          </p>
-          <div className="w-[80px] h-[1px] bg-gold my-12" />
-          
-          <div className="flex gap-6 justify-center">
-            <button className="btn-gold cursor-pointer pointer-events-auto">
-              CONFIGURE YOURS
-            </button>
-            <button className="btn-ghost cursor-pointer pointer-events-auto">
-              CONTACT PAGANI
-            </button>
+      <div className="relative mx-auto flex h-full w-full max-w-none items-center px-[0.8vw]">
+        <div className="w-full">
+          <img
+            src="/assets/img/logo.png"
+            alt="Pagani"
+            className="h-[22px] w-auto opacity-90"
+            draggable={false}
+          />
+
+          <div className="mt-8 w-full">
+            <p
+              className="select-none whitespace-nowrap font-body font-[700] tracking-[-0.045em] text-cream leading-[0.76] w-full"
+              style={{ fontSize: 'clamp(135px, 27vw, 760px)', transform: 'scaleX(1.04)', transformOrigin: 'left center' }}
+            >
+              PAGANI
+            </p>
           </div>
         </div>
       </div>

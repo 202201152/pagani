@@ -145,7 +145,7 @@ export function GallerySection() {
       ref={sectionRef}
       className="relative overflow-hidden bg-void pt-[3vh] pb-[6vh]"
     >
-      <div className="relative z-10 mx-auto w-[94vw]">
+      <div className="relative z-10 mx-auto w-full max-w-none px-[2vw]">
         <div className="mb-6">
           <p className="font-mono text-[11px] tracking-[0.24em] text-gold">HIGHLIGHTS</p>
         </div>

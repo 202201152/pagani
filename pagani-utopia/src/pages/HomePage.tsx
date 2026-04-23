@@ -4,6 +4,7 @@ import { SpecGrid } from '../components/sections/performance/SpecGrid';
 import { EngineSection } from '../components/sections/performance/EngineSection';
 import { GallerySection } from '../components/sections/performance/GallerySection';
 import { AccelSection } from '../components/sections/performance/AccelSection';
+import { WhatYouGetSection } from '../components/sections/performance/WhatYouGetSection';
 import { Hero } from '../components/sections/interior/Hero';
 import { Cockpit } from '../components/sections/interior/Cockpit';
 import { Gearshift } from '../components/sections/interior/Gearshift';
@@ -21,6 +22,7 @@ export function HomePage() {
       {/* Performance Section */}
       <section id="performance">
         <SpecGrid />
+        <WhatYouGetSection />
         <EngineSection />
         <AccelSection />
       </section>
