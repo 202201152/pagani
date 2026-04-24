@@ -608,6 +608,48 @@ body {
   z-index: 101;
 }
 
+.telemetry-grid-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.telemetry-control-row {
+  display: grid;
+  grid-template-columns: 1.1fr 5fr auto;
+}
+
+.dial-label {
+  margin-top: 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  color: var(--bone-dim);
+  text-transform: uppercase;
+}
+
+.dial-top-label {
+  position: absolute;
+  top: 24%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: rgba(245, 240, 232, 0.55);
+  text-transform: uppercase;
+  pointer-events: none;
+  text-align: center;
+  z-index: 2;
+}
+
+.dial-center {
+  text-align: center;
+}
+
+.dial-value .unit {
+  font-family: "JetBrains Mono", monospace;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .horizontal-section {
@@ -641,6 +683,23 @@ body {
     width: 24px;
     height: 1px;
     background: var(--gold);
+  }
+
+  .telemetry-grid-row {
+    grid-template-columns: 1fr;
+  }
+
+  .telemetry-grid-row .spec-card {
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+  }
+
+  .telemetry-grid-row .spec-card:last-child {
+    border-bottom: 0;
+  }
+
+  .telemetry-control-row {
+    grid-template-columns: 1fr;
   }
 }
 

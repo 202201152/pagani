@@ -1,0 +1,230 @@
+.pagani-perf {
+  --ink: #07070a;
+  --bone: #ece6d6;
+  --bone-dim: rgba(236, 230, 214, 0.56);
+  --brass: #d4a85c;
+  --redline: #c74a3c;
+}
+
+.pagani-perf .pp-root {
+  background: var(--ink);
+  color: var(--bone);
+  padding: clamp(72px, 9vw, 140px) 0;
+}
+
+.pagani-perf .pp-top-strip {
+  border-top: 1px solid rgba(212, 168, 92, 0.2);
+  border-bottom: 1px solid rgba(212, 168, 92, 0.12);
+  padding: 10px 0;
+  margin-bottom: 28px;
+}
+
+.pagani-perf .pp-hud-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.pagani-perf .pp-gold {
+  color: var(--brass);
+}
+
+.pagani-perf .pp-hero {
+  min-height: 260px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 24px;
+}
+
+.pagani-perf .pp-title {
+  margin: 0;
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(58px, 12vw, 158px);
+  line-height: 0.86;
+}
+
+.pagani-perf .pp-title span {
+  color: var(--brass);
+  font-style: italic;
+}
+
+.pagani-perf .pp-ignition {
+  margin-top: 20px;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 168, 92, 0.5);
+  background: radial-gradient(circle at 50% 40%, rgba(212, 168, 92, 0.28), rgba(7, 7, 10, 0.96) 58%);
+  color: var(--bone);
+  font-family: "JetBrains Mono", monospace;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.pagani-perf .pp-grid-shell {
+  border: 1px solid rgba(212, 168, 92, 0.4);
+}
+
+.pagani-perf .pp-divider {
+  border-bottom: 1px solid rgba(212, 168, 92, 0.14);
+}
+
+.pagani-perf .telemetry-grid-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pagani-perf .pp-cell {
+  min-height: 250px;
+  border-right: 1px solid rgba(212, 168, 92, 0.12);
+  padding: 18px;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 12px;
+}
+
+.pagani-perf .pp-cell:last-child {
+  border-right: 0;
+}
+
+.pagani-perf .dial-wrap {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pagani-perf .dial-top-label {
+  position: absolute;
+  top: 24%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: var(--bone-dim);
+  text-transform: uppercase;
+  pointer-events: none;
+  text-align: center;
+  z-index: 2;
+}
+
+.pagani-perf .pp-needle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 124%;
+  max-width: none;
+  transform: translate(-50%, -52%) rotate(-128deg);
+  transform-origin: 50% 54%;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.65));
+}
+
+.pagani-perf .dial-center {
+  text-align: center;
+}
+
+.pagani-perf .dial-value {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+}
+
+.pagani-perf .pp-value {
+  font-family: "Bodoni Moda", serif;
+  font-size: 56px;
+  line-height: 0.9;
+}
+
+.pagani-perf .unit {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--brass);
+  text-transform: uppercase;
+}
+
+.pagani-perf .pp-type-cell {
+  text-align: center;
+}
+
+.pagani-perf .pp-type-value {
+  margin: 0;
+  font-family: "Bodoni Moda", serif;
+  font-size: clamp(56px, 7vw, 76px);
+  line-height: 0.9;
+}
+
+.pagani-perf .pp-type-value span {
+  color: var(--brass);
+  font-style: italic;
+}
+
+.pagani-perf .pp-type-unit {
+  margin: 4px 0 0;
+  color: var(--brass);
+  font-family: "Bodoni Moda", serif;
+  font-size: 32px;
+}
+
+.pagani-perf .pp-type-label {
+  margin: 8px 0 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+}
+
+.pagani-perf .telemetry-control-row {
+  display: grid;
+  grid-template-columns: 1.1fr 5fr auto;
+}
+
+.pagani-perf .pp-controls {
+  margin-top: 14px;
+  border: 1px solid rgba(212, 168, 92, 0.2);
+  padding: clamp(16px, 2.6vw, 22px);
+  gap: 16px;
+  align-items: center;
+}
+
+.pagani-perf .pp-labels,
+.pagani-perf .pp-readouts {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.pagani-perf .pp-readouts {
+  display: grid;
+  gap: 8px;
+}
+
+.pagani-perf .pp-slider-wrap input[type="range"] {
+  width: 100%;
+  accent-color: var(--brass);
+}
+
+@media (max-width: 1024px) {
+  .pagani-perf .telemetry-grid-row,
+  .pagani-perf .telemetry-control-row {
+    grid-template-columns: 1fr;
+  }
+
+  .pagani-perf .pp-cell {
+    border-right: 0;
+    border-bottom: 1px solid rgba(212, 168, 92, 0.12);
+  }
+}
