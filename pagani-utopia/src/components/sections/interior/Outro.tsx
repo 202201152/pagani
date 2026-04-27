@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function Outro() {
   const containerRef = useRef<HTMLElement>(null);
-  const { setCurrentCameraPosition } = useAppStore();
+  const setCurrentCameraPosition = useAppStore((state) => state.setCurrentCameraPosition);
 
   useEffect(() => {
     const ctx = gsap.context(() => {

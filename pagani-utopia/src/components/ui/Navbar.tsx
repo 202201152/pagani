@@ -5,7 +5,6 @@ import { useScramble } from '../../hooks/useScramble';
 const NAVIGATION = [
   { id: 'design', label: 'DESIGN' },
   { id: 'performance', label: 'PERFORMANCE' },
-  { id: 'interior', label: 'INTERIOR' },
 ];
 
 export function Navbar() {

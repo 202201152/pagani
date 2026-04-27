@@ -2,9 +2,16 @@ import Meter from './Meter';
 import IgnitionButton from './IgnitionButton';
 import GearDisplay from './GearDisplay';
 import { useEngineSimulation } from './useEngineSimulation';
+import { useEngineAudio } from './useEngineAudio';
 
 export default function Dashboard() {
-  const sim = useEngineSimulation();
+  const audio = useEngineAudio({ src: '/audio/engine-voice.mp3' });
+  const sim = useEngineSimulation({
+    onFrame: (t) => {
+      // keep audio locked to sim time
+      audio.setTime(t);
+    },
+  });
 
   return (
     <section
@@ -84,7 +91,15 @@ export default function Dashboard() {
 
         {/* Center: ignition button */}
         <div className="mt-20">
-          <IgnitionButton isRunning={sim.isRunning} onToggle={sim.toggle} />
+          <IgnitionButton
+            isRunning={sim.isRunning}
+            onToggle={() => {
+              // play must start on user gesture
+              if (!sim.isRunning) audio.playFromStart();
+              else audio.stop();
+              sim.toggle();
+            }}
+          />
         </div>
 
         {/* Lower readouts */}
@@ -111,54 +126,6 @@ export default function Dashboard() {
           </div>
         </div>
       </main>
-
-      {/* Bottom nav (from provided design) */}
-      <nav
-        className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-around border-t px-12 pb-6 pt-2"
-        style={{
-          background: 'linear-gradient(to bottom, #171717, #000)',
-          borderTop: '1px solid #1A1A1A',
-          boxShadow: '0 -10px 30px rgba(0,0,0,0.9)',
-          borderTopLeftRadius: '12px',
-          borderTopRightRadius: '12px',
-        }}
-      >
-        <button
-          type="button"
-          className="group w-24 translate-y-[-2px] border-t-2 border-[#D4AF37] pt-2 text-[#D4AF37] duration-200 hover:bg-neutral-900/50"
-          aria-current="page"
-        >
-          <div className="mb-1 text-[28px] leading-none">⌂</div>
-          <div className="font-display text-[10px] uppercase tracking-widest">Cockpit</div>
-        </button>
-        <button
-          type="button"
-          className="group w-24 translate-y-[-2px] pt-2 text-neutral-600 duration-200 hover:bg-neutral-900/50 hover:text-[#D4AF37]"
-        >
-          <div className="mb-1 text-[24px] leading-none transition-transform group-hover:scale-110">
-            ⏱
-          </div>
-          <div className="font-display text-[10px] uppercase tracking-widest">Telemetry</div>
-        </button>
-        <button
-          type="button"
-          className="group w-24 translate-y-[-2px] pt-2 text-neutral-600 duration-200 hover:bg-neutral-900/50 hover:text-[#D4AF37]"
-        >
-          <div className="mb-1 text-[24px] leading-none transition-transform group-hover:scale-110">
-            ⌖
-          </div>
-          <div className="font-display text-[10px] uppercase tracking-widest">Navigation</div>
-        </button>
-        <button
-          type="button"
-          className="group w-24 translate-y-[-2px] pt-2 text-neutral-600 duration-200 hover:bg-neutral-900/50 hover:text-[#D4AF37]"
-        >
-          <div className="mb-1 text-[24px] leading-none transition-transform group-hover:scale-110">
-            ◉
-          </div>
-          <div className="font-display text-[10px] uppercase tracking-widest">Media</div>
-        </button>
-      </nav>
     </section>
   );
 }

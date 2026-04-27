@@ -37,7 +37,6 @@ export const TEASER_SPECS = [
 export const PAGE_TAGLINES = {
   design: 'Where art ends, engineering begins.',
   performance: '852 reasons to believe.',
-  interior: 'Every detail, handmade.',
   outro: 'Only 99. Each one different. Each one final.',
 };
 
@@ -50,7 +49,6 @@ export const HORACIO_QUOTE = {
 export const NAVIGATION = [
   { id: 'design', label: 'DESIGN' },
   { id: 'performance', label: 'PERFORMANCE' },
-  { id: 'interior', label: 'INTERIOR' },
 ];
 
 export const IMAGES = {

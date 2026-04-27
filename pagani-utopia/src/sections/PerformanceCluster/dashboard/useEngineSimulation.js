@@ -27,7 +27,7 @@ function rangeForGear(gear) {
  * Central simulation state (kept off the React render loop).
  * UI binds DOM nodes and we update them at 60fps via rAF.
  */
-export function useEngineSimulation() {
+export function useEngineSimulation({ onFrame } = {}) {
   const [isRunning, setIsRunning] = useState(false);
 
   const configRef = useRef({
@@ -35,6 +35,8 @@ export function useEngineSimulation() {
     // Calibrated to ~0-100 in 3.0s and ~350 in ~11.8s.
     accelKMax: 1.09, // 1/s
     accelTau: 13.7, // seconds (controls early ramp)
+    runDuration: 15, // seconds total "alive" run
+    holdAfterTop: true,
   });
 
   const nodesRef = useRef({
@@ -117,8 +119,35 @@ export function useEngineSimulation() {
     const dt = clamp((t - prevT) / 1000, 0, 0.05); // seconds
 
     // --- drivetrain model (physics-inspired, non-linear) ---
-    const { vmax, accelKMax, accelTau } = configRef.current;
+    const { vmax, accelKMax, accelTau, runDuration, holdAfterTop } = configRef.current;
     simRef.current.runTime += dt;
+    if (onFrame) onFrame(simRef.current.runTime, simRef.current);
+
+    // Keep the sequence alive for 15s (requested).
+    // After the run duration, hold values steady (or you can call stop()).
+    if (simRef.current.runTime >= runDuration) {
+      if (!holdAfterTop) {
+        // stop() would toggle state + cleanup; we don't call it here to avoid React setState in rAF.
+        simRef.current.isRunning = false;
+        return;
+      }
+
+      // subtle "engine singing" micro-variation while holding top speed
+      simRef.current.speed = vmax;
+      const idle = 1200;
+      const redline = 8500;
+      simRef.current.gear = 7;
+      const shimmer = Math.sin(simRef.current.runTime * 6.0) * 90;
+      simRef.current.rpm = clamp(redline - 220 + shimmer, idle, redline + 200);
+
+      const { speedEl, rpmEl, gearEl } = nodesRef.current;
+      if (speedEl) speedEl.textContent = String(Math.round(simRef.current.speed));
+      if (rpmEl) rpmEl.textContent = String(Math.round(simRef.current.rpm));
+      if (gearEl) gearEl.textContent = String(simRef.current.gear);
+
+      loopRef.current.rafId = requestAnimationFrame(tick);
+      return;
+    }
 
     // Accel curve: exponential approach with a slow power ramp.
     // This matches the desired timeline:
