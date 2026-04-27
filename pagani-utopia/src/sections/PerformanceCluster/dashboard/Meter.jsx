@@ -12,6 +12,7 @@ export default function Meter({
   label,
   value,
   unit,
+  valueRef,
   size = 'sm',
   elevate = false,
   redline = false,
@@ -68,6 +69,7 @@ export default function Meter({
             {label}
           </span>
           <span
+            ref={valueRef}
             className={cx(
               'font-display tracking-[-0.02em]',
               isLarge ? 'text-[48px]' : 'text-[32px]'

@@ -1,4 +1,4 @@
-export default function GearDisplay({ label = 'Transmission', gear = '1' }) {
+export default function GearDisplay({ label = 'Transmission', gear = '1', gearRef }) {
   return (
     <div className="flex flex-col items-start">
       <span className="font-mono text-[12px] uppercase tracking-widest text-[#99907c]">
@@ -7,6 +7,7 @@ export default function GearDisplay({ label = 'Transmission', gear = '1' }) {
       <div className="mt-1 flex items-baseline gap-2">
         <span className="font-display text-[32px] text-[#eae1d4]">GEAR</span>
         <span
+          ref={gearRef}
           className="font-display text-[48px] tracking-[-0.02em]"
           style={{
             color: '#d4af37',

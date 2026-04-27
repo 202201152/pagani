@@ -1,8 +1,11 @@
 import Meter from './Meter';
 import IgnitionButton from './IgnitionButton';
 import GearDisplay from './GearDisplay';
+import { useEngineSimulation } from './useEngineSimulation';
 
 export default function Dashboard() {
+  const sim = useEngineSimulation();
+
   return (
     <section
       className="relative min-h-screen overflow-hidden bg-[#16130b] text-[#eae1d4]"
@@ -57,20 +60,37 @@ export default function Dashboard() {
         {/* Top Row: meters */}
         <div className="flex w-full max-w-[1400px] items-end justify-center gap-10">
           <Meter kind="displacement" label="Displacement" value="5980" unit="CC" size="sm" />
-          <Meter kind="speed" label="Speed" value="350" unit="KM/H" size="lg" elevate />
-          <Meter kind="rpm" label="Engine" value="8500" unit="RPM" size="lg" elevate redline />
+          <Meter
+            kind="speed"
+            label="Speed"
+            value="0"
+            unit="KM/H"
+            size="lg"
+            elevate
+            valueRef={sim.bind.setSpeedEl}
+          />
+          <Meter
+            kind="rpm"
+            label="Engine"
+            value="0"
+            unit="RPM"
+            size="lg"
+            elevate
+            redline
+            valueRef={sim.bind.setRpmEl}
+          />
           <Meter kind="weight" label="Dry Weight" value="1280" unit="KG" size="sm" />
         </div>
 
         {/* Center: ignition button */}
         <div className="mt-20">
-          <IgnitionButton />
+          <IgnitionButton isRunning={sim.isRunning} onToggle={sim.toggle} />
         </div>
 
         {/* Lower readouts */}
         <div className="absolute bottom-40 w-full max-w-[1000px] px-10">
           <div className="flex w-full items-end justify-between">
-            <GearDisplay label="Transmission" />
+            <GearDisplay label="Transmission" gear="1" gearRef={sim.bind.setGearEl} />
             <div className="flex flex-col items-end text-right">
               <span className="font-mono text-[12px] tracking-[0.14em] text-[#99907c] uppercase">
                 Suspension
