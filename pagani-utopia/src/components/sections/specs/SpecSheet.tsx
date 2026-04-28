@@ -102,8 +102,8 @@ function SpecGroup({ group }: { group: SpecGroup }) {
   return (
     <div className="spec-group">
       <p className="spec-group__title">{group.title}</p>
-      {group.rows.map((row) => (
-        <div key={row.label} className="spec-row">
+      {group.rows.map((row, i) => (
+        <div key={i} className="spec-row">
           <span className="spec-row__label">{row.label}</span>
           <span className="spec-row__value">{row.value}</span>
         </div>

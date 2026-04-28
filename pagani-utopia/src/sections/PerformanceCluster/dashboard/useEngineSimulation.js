@@ -119,7 +119,7 @@ export function useEngineSimulation({ onFrame } = {}) {
     const dt = clamp((t - prevT) / 1000, 0, 0.05); // seconds
 
     // --- drivetrain model (physics-inspired, non-linear) ---
-    const { vmax, accelKMax, accelTau, runDuration, holdAfterTop } = configRef.current;
+    const { vmax, accelKMax, accelTau, runDuration } = configRef.current;
     simRef.current.runTime += dt;
     if (onFrame) onFrame(simRef.current.runTime, simRef.current);
 
