@@ -16,7 +16,8 @@ export function PartnersSection() {
       id="partners"
       style={{
         width: '100%',
-        padding: '80px 0',
+        paddingTop: '80px',
+        paddingBottom: '80px',
         background: '#000',
         overflow: 'hidden',
       }}

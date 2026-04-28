@@ -1,0 +1,82 @@
+/* ─── Spec Sheet ────────────────────────────────────────── */
+.spec-sheet {
+  background: #000;
+  color: #e8e8e8;
+  padding: 120px 120px 120px;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+}
+
+.spec-sheet__heading {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  margin: 0 0 56px 0;
+}
+
+/* Two-column grid */
+.spec-sheet__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 60px;
+}
+
+@media (max-width: 900px) {
+  .spec-sheet__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Group ────────────────────────────────────────────── */
+.spec-group {
+  margin-bottom: 48px;
+}
+
+.spec-group__title {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0 0 10px 0;
+  padding-bottom: 6px;
+}
+
+/* ─── Row ──────────────────────────────────────────────── */
+.spec-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.22);
+}
+
+.spec-row:last-child {
+  border-bottom: none;
+}
+
+.spec-row__label {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+}
+
+.spec-row__value {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+/* ─── Footer label ─────────────────────────────────────── */
+.spec-sheet__footer-label {
+  margin-top: 80px;
+  text-align: center;
+  font-size: clamp(20px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #fff;
+  opacity: 0.9;
+}

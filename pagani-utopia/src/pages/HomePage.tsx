@@ -3,6 +3,7 @@ import { UtopiaTextSection } from '../components/sections/design/UtopiaTextSecti
 import { GallerySection } from '../components/sections/performance/GallerySection';
 import { Outro } from '../components/sections/interior/Outro';
 import { PartnersSection } from '../components/sections/partners/PartnersSection';
+import { SpecSheet } from '../components/sections/specs/SpecSheet';
 import PerformanceCluster from '../sections/PerformanceCluster';
 
 export function HomePage() {
@@ -36,8 +37,18 @@ export function HomePage() {
         <div style={{ height: '220px' }} />
       </section>
 
+      {/* Spec Sheet Section */}
+      <section className="px-[clamp(24px,6vw,500px)]">
+        <SpecSheet />
+      </section>
+
+      {/* Spacer after Specs */}
+      <div style={{ height: '120px' }} />
+
       {/* Partners Section */}
-      <PartnersSection />
+      <section className="px-[clamp(24px,6vw,500px)]">
+        <PartnersSection />
+      </section>
 
       {/* Spacer after Partners */}
       <div style={{ height: '120px' }} />
