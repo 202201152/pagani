@@ -1,5 +1,4 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
-import gsap from 'gsap';
 
 const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
@@ -12,14 +11,13 @@ interface ScrambleOptions {
 export function useScramble(initialText: string = '') {
   const [displayText, setDisplayText] = useState(initialText);
   const isScrambling = useRef(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const scramble = useCallback(
     (finalText: string, options: ScrambleOptions = {}) => {
       const {
         duration = 400,
         interval = 40,
-        iterations = 10,
       } = options;
 
       if (isScrambling.current) return;

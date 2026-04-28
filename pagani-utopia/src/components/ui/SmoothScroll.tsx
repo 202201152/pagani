@@ -20,22 +20,16 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
       lerp: 0.1,
       smoothWheel: true,
       wheelMultiplier: 0.9,
-      touchSmoothness: 0.1,
-      smoothTouch: false,
     });
 
     lenisRef.current = lenis;
 
     // Connect to GSAP ticker
-    const raf = (time: number) => {
+    const updateLenis = (time: number) => {
       lenis.raf(time * 1000);
-      gsap.ticker.request(raf);
     };
 
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-
+    gsap.ticker.add(updateLenis);
     gsap.ticker.lagSmoothing(0);
 
     // Update scroll progress
@@ -57,7 +51,7 @@ export function SmoothScroll({ children }: SmoothScrollProps) {
 
     return () => {
       lenis.destroy();
-      gsap.ticker.remove(raf);
+      gsap.ticker.remove(updateLenis);
       window.removeEventListener('pagani-route-change', handleRouteChange);
     };
   }, [setScrollProgress]);

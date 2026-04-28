@@ -1,4 +1,4 @@
-import LogoLoop from '../../ui/LogoLoop';
+import LogoLoop from '../../ui/LogoLoopWrapper';
 
 const partnerLogos = [
   { src: '/assets/img/amg_lg.png',    alt: 'AMG' },

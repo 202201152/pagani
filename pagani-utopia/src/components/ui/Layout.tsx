@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Navbar } from './Navbar';
 import { Cursor } from './Cursor';
 import { Preloader } from './Preloader';

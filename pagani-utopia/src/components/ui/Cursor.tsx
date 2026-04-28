@@ -6,8 +6,8 @@ export function Cursor() {
   const outerRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
   const { isInRotationSection } = useAppStore();
-  const [isHovering, setIsHovering] = useState(false);
-  const [hoverType, setHoverType] = useState<'button' | 'image' | null>(null);
+  const [_isHovering, setIsHovering] = useState(false);
+  const [_hoverType, setHoverType] = useState<'button' | 'image' | null>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {

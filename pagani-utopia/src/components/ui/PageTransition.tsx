@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import { useAppStore } from '../../store/useAppStore';
-import { CAMERA_POSITIONS } from '../../lib/constants';
 
 interface PageTransitionProps {
   children: React.ReactNode;
@@ -11,7 +10,7 @@ interface PageTransitionProps {
 export function PageTransition({ children }: PageTransitionProps) {
   const overlayRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
-  const { setCurrentCameraPosition, activePage } = useAppStore();
+  const { setCurrentCameraPosition } = useAppStore();
   const previousPathRef = useRef(location.pathname);
 
   useEffect(() => {
