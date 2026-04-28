@@ -21,46 +21,7 @@ export default function Dashboard() {
           'radial-gradient(ellipse at center, rgba(35,31,23,1) 0%, rgba(22,19,11,1) 40%, rgba(17,14,7,1) 100%)',
       }}
     >
-      {/* Top App Bar (from provided design) */}
-      <header
-        className="absolute left-0 right-0 top-0 z-50 flex w-full items-center justify-between border-b px-[clamp(24px,6vw,500px)] py-4 backdrop-blur-3xl"
-        style={{
-          background: 'rgba(3,3,3,0.78)',
-          borderBottom: '1px solid transparent',
-          borderImage: 'linear-gradient(to right, #3A3A3A, #1A1A1A) 1',
-          boxShadow: 'inset 0px -2px 4px rgba(0,0,0,0.5)',
-        }}
-      >
-        <div className="flex items-center gap-4">
-          <span className="select-none text-2xl leading-none text-[#D4AF37]">⏱</span>
-          <h1 className="font-display text-xl uppercase tracking-[0.2em] text-[#D4AF37]">
-            PAGANI INSTRUMENTS
-          </h1>
-        </div>
-        <div className="flex items-center gap-6 text-neutral-500">
-          <button
-            type="button"
-            className="scale-95 transition-colors duration-300 hover:text-[#D4AF37] active:translate-y-px"
-            aria-label="Settings"
-          >
-            <span className="select-none">⚙</span>
-          </button>
-          <button
-            type="button"
-            className="scale-95 transition-colors duration-300 hover:text-[#D4AF37] active:translate-y-px"
-            aria-label="AC"
-          >
-            <span className="select-none">❄</span>
-          </button>
-          <button
-            type="button"
-            className="scale-95 transition-colors duration-300 hover:text-[#D4AF37] active:translate-y-px"
-            aria-label="Bluetooth"
-          >
-            <span className="select-none">⌁</span>
-          </button>
-        </div>
-      </header>
+
 
       {/* Main canvas */}
       <main className="relative flex min-h-screen flex-col items-center justify-center px-[clamp(24px,6vw,500px)] pb-32 pt-24">

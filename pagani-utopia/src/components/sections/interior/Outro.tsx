@@ -23,25 +23,18 @@ export function Outro() {
 
   return (
     <section ref={containerRef} className="relative w-full h-screen overflow-hidden z-10">
-      <div className="absolute inset-0 bg-[#0A0A0A] -z-10" />
+      <div className="absolute inset-0 bg-black -z-10" />
       <div
         aria-hidden
         className="absolute inset-0 -z-10 opacity-80"
         style={{
           background:
-            'radial-gradient(circle at 50% 35%, rgba(255,255,255,0.07), rgba(10,10,10,0.96) 62%)',
+            'radial-gradient(circle at 50% 35%, rgba(255,255,255,0.04), rgba(0,0,0,1) 62%)',
         }}
       />
 
       <div className="relative mx-auto flex h-full w-full max-w-none items-center px-[0.8vw]">
         <div className="w-full">
-          <img
-            src="/assets/img/logo.png"
-            alt="Pagani"
-            className="h-[22px] w-auto opacity-90"
-            draggable={false}
-          />
-
           <div className="mt-8 w-full">
             <p
               className="select-none whitespace-nowrap font-body font-[700] tracking-[-0.045em] text-cream leading-[0.76] w-full"

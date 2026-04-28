@@ -150,10 +150,6 @@ export function Navbar() {
           }}
         />
 
-        {/* Configure Button */}
-        <button className="btn-gold cta-btn" style={{ fontSize: '11px', padding: '12px 24px' }}>
-          CONFIGURE
-        </button>
 
         {/* Hamburger Menu (Mobile) */}
         <div className="hamburger" onClick={toggleMenu}>

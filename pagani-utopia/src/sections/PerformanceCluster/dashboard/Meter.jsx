@@ -64,8 +64,8 @@ export default function Meter({
           <div className="absolute right-0 top-0 h-1/2 w-1/2 rounded-tr-full bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[rgba(255,180,171,0.12)] to-transparent" />
         ) : null}
 
-        <div className="relative z-10 flex flex-col items-center rounded-full border border-white/10 bg-[rgba(17,14,7,0.72)] p-4 backdrop-blur-sm">
-          <span className="mb-1 font-mono text-[12px] uppercase tracking-widest text-[#99907c]">
+        <div className="relative z-10 flex flex-col items-center rounded-full border border-white/10 bg-[rgba(17,14,7,0.72)] px-6 py-5 backdrop-blur-sm">
+          <span className="mb-3 font-mono text-[12px] uppercase tracking-widest text-[#99907c]">
             {label}
           </span>
           <span
@@ -79,11 +79,12 @@ export default function Meter({
               filter: isLarge
                 ? 'drop-shadow(0 0 12px rgba(212,175,55,0.4))'
                 : 'drop-shadow(0 0 8px rgba(233,195,73,0.3))',
+              lineHeight: 1,
             }}
           >
             {value}
           </span>
-          <span className="mt-2 font-mono text-[11px] uppercase tracking-[0.25em] text-[rgba(208,197,175,0.9)]">
+          <span className="mt-3 font-mono text-[11px] uppercase tracking-[0.25em] text-[rgba(208,197,175,0.9)]">
             {unit}
           </span>
         </div>

@@ -3,7 +3,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-void: #0A0A0A;
+  --color-void: #000000;
   --color-surface: #111111;
   --color-gold: #C9A84C;
   --color-gold-hi: #E8C96A;
@@ -23,7 +23,7 @@
 /* Design Tokens */
 :root {
   /* Backgrounds */
-  --void: #0A0A0A;
+  --void: #000000;
   --surface: #111111;
   --lifted: #181818;
   --border: rgba(255, 255, 255, 0.07);

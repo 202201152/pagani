@@ -6,9 +6,6 @@ export function UtopiaTextSection() {
   return (
     <section className="bg-void py-[200vh] mt-[4000px] mb-[4000px]">
       <div className="mx-auto w-full max-w-[4200px] pl-[4000px] pr-[4vw] text-center">
-        <p className="mb-10 font-mono text-[10px] tracking-[0.3em] text-gold uppercase">
-          Manifesto
-        </p>
         <ScrollReveal
           baseOpacity={0.08}
           enableBlur
