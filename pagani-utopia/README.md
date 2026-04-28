@@ -1,5 +1,7 @@
 # Pagani Utopia — Interactive Showcase Website
 
+**Live Demo:** [https://pagani-3kaj.vercel.app/](https://pagani-3kaj.vercel.app/)
+
 An immersive, performance-focused showcase website for the Pagani Utopia hypercar. Built with React, TypeScript, and Vite — featuring cinematic scroll animations, a real-time engine simulation dashboard, and a full technical specification sheet.
 
 ---
