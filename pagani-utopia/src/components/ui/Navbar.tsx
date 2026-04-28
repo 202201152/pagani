@@ -111,7 +111,17 @@ export function Navbar() {
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}>
-          <img src="/assets/img/logo.png" alt="Pagani" className="navbar-brand-logo" draggable={false} />
+          <img
+            src="/assets/img/pagani-logo-outline.png"
+            alt="Pagani"
+            draggable={false}
+            style={{
+              height: '100px',
+              width: 'auto',
+              display: 'block',
+              opacity: 0.95,
+            }}
+          />
         </a>
 
         {/* Navigation Links */}

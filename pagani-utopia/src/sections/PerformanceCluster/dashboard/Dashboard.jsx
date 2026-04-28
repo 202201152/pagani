@@ -23,7 +23,7 @@ export default function Dashboard() {
     >
       {/* Top App Bar (from provided design) */}
       <header
-        className="absolute left-0 right-0 top-0 z-50 flex w-full items-center justify-between border-b px-10 py-4 backdrop-blur-3xl"
+        className="absolute left-0 right-0 top-0 z-50 flex w-full items-center justify-between border-b px-[clamp(24px,6vw,500px)] py-4 backdrop-blur-3xl"
         style={{
           background: 'rgba(3,3,3,0.78)',
           borderBottom: '1px solid transparent',
@@ -63,7 +63,7 @@ export default function Dashboard() {
       </header>
 
       {/* Main canvas */}
-      <main className="relative flex min-h-screen flex-col items-center justify-center px-10 pb-32 pt-24">
+      <main className="relative flex min-h-screen flex-col items-center justify-center px-[clamp(24px,6vw,500px)] pb-32 pt-24">
         {/* Top Row: meters */}
         <div className="flex w-full max-w-[1400px] items-end justify-center gap-10">
           <Meter kind="displacement" label="Displacement" value="5980" unit="CC" size="sm" />
