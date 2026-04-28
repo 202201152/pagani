@@ -123,29 +123,21 @@ export function useEngineSimulation({ onFrame } = {}) {
     simRef.current.runTime += dt;
     if (onFrame) onFrame(simRef.current.runTime, simRef.current);
 
-    // Keep the sequence alive for 15s (requested).
-    // After the run duration, hold values steady (or you can call stop()).
+    // Animation complete — stop everything and reset meters to 0.
     if (simRef.current.runTime >= runDuration) {
-      if (!holdAfterTop) {
-        // stop() would toggle state + cleanup; we don't call it here to avoid React setState in rAF.
-        simRef.current.isRunning = false;
-        return;
-      }
-
-      // subtle "engine singing" micro-variation while holding top speed
-      simRef.current.speed = vmax;
-      const idle = 1200;
-      const redline = 8500;
-      simRef.current.gear = 7;
-      const shimmer = Math.sin(simRef.current.runTime * 6.0) * 90;
-      simRef.current.rpm = clamp(redline - 220 + shimmer, idle, redline + 200);
+      simRef.current.isRunning = false;
+      simRef.current.speed = 0;
+      simRef.current.rpm = 0;
+      simRef.current.gear = 0;
 
       const { speedEl, rpmEl, gearEl } = nodesRef.current;
-      if (speedEl) speedEl.textContent = String(Math.round(simRef.current.speed));
-      if (rpmEl) rpmEl.textContent = String(Math.round(simRef.current.rpm));
-      if (gearEl) gearEl.textContent = String(simRef.current.gear);
+      if (speedEl) speedEl.textContent = '0';
+      if (rpmEl) rpmEl.textContent = '0';
+      if (gearEl) gearEl.textContent = '–';
 
-      loopRef.current.rafId = requestAnimationFrame(tick);
+      if (loopRef.current.rafId) cancelAnimationFrame(loopRef.current.rafId);
+      loopRef.current.rafId = 0;
+      setIsRunning(false);
       return;
     }
 
